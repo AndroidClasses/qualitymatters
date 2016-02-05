@@ -1,4 +1,4 @@
-# QualityMatters
+# QualityMatters [中文](https://github.com/AndroidClasses/qualitymatters/blob/master/README_cn.md)
 
 This is the app that follows all principles of [Android Development Culture described here](http://artemzin.com/blog/android-development-culture-the-document-qualitymatters/).
 
