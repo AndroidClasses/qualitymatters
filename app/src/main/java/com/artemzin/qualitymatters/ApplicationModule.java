@@ -1,12 +1,12 @@
 package com.artemzin.qualitymatters;
 
+import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.picasso.OkHttpDownloader;
+import com.jakewharton.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
 
 import javax.inject.Named;
@@ -14,22 +14,22 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import okhttp3.OkHttpClient;
 
-// It's a Dagger module that provides application level dependencies.
 @Module
 public class ApplicationModule {
 
     public static final String MAIN_THREAD_HANDLER = "main_thread_handler";
 
     @NonNull
-    private final QualityMattersApp qualityMattersApp;
+    private final Application qualityMattersApp;
 
-    public ApplicationModule(@NonNull QualityMattersApp qualityMattersApp) {
+    public ApplicationModule(@NonNull Application qualityMattersApp) {
         this.qualityMattersApp = qualityMattersApp;
     }
 
     @Provides @NonNull @Singleton
-    public QualityMattersApp provideQualityMattersApp() {
+    public Application provideQualityMattersApp() {
         return qualityMattersApp;
     }
 
@@ -44,9 +44,9 @@ public class ApplicationModule {
     }
 
     @Provides @NonNull @Singleton
-    public Picasso providePicasso(@NonNull QualityMattersApp qualityMattersApp, @NonNull OkHttpClient okHttpClient) {
+    public Picasso providePicasso(@NonNull Application qualityMattersApp, @NonNull OkHttpClient okHttpClient) {
         return new Picasso.Builder(qualityMattersApp)
-                .downloader(new OkHttpDownloader(okHttpClient))
+                .downloader(new OkHttp3Downloader(okHttpClient))
                 .build();
     }
 }

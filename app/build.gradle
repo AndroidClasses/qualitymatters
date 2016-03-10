@@ -1,20 +1,30 @@
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'hu.supercluster.paperwork'
 apply from: '../code_quality_tools/jacoco.gradle'
 
+paperwork {
+    set = [
+        gitSha:    gitSha(),
+        buildDate: buildTime("dd-MM-yyyy HH:00:00 z", "UTC"),
+    ]
+}
+
 android {
-    // See build.gradle in the root of the project
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    // Declared in dependencies.gradle in the root of the project.
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
 
     defaultConfig {
         applicationId 'com.artemzin.qualitymatters'
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName '1.0'
-        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.code // Notice that you may want to use BUILD_NUMBER from CI in real project with own CI.
+        versionName versions.name
+
+        // Notice that we have custom Instrumentation test runner to change application class (to mock dependencies)!
+        testInstrumentationRunner 'com.artemzin.qualitymatters.functional_tests.QualityMattersFunctionalTestsRunner'
     }
 
     compileOptions {
@@ -38,6 +48,7 @@ android {
 
         release {
             signingConfig signingConfigs.qualityMatters
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt')
         }
@@ -88,7 +99,7 @@ android {
     }
 }
 
-// Libraries declared in build.gradle in the root of the project
+// Libraries declared in dependencies.gradle in the root of the project
 dependencies {
     compile libraries.dagger
     apt libraries.daggerCompiler
@@ -98,7 +109,6 @@ dependencies {
     compile libraries.rxJava
 
     compile libraries.okHttp
-    compile libraries.okHttpLoggingInterceptor
     compile libraries.retrofit
     compile libraries.retrofitJacksonConverter
     compile libraries.retrofitRxJavaAdapter
@@ -114,13 +124,21 @@ dependencies {
 
     compile libraries.butterKnife
     compile libraries.picasso
+    compile libraries.picassoOkHttpDownloader
     compile libraries.timber
 
+    // Analytics. Why? To make app more real.
+    // We mock analytics for Integration tests under Robolectric and Functional (UI) tests under Instrumentation!
+    compile libraries.yandexAppMetrica
+
     // Developer tools (Developer Settings)
+    debugCompile libraries.okHttpLoggingInterceptor
     debugCompile libraries.stetho
     debugCompile libraries.stethoOkHttp
     debugCompile libraries.leakCanary
     debugCompile libraries.tinyDancer
+    debugCompile libraries.paperwork
+    debugCompile libraries.lynx
 
     testCompile libraries.junit
     testCompile libraries.robolectric
