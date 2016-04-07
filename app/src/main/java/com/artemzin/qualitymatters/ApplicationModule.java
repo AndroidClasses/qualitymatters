@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 
+import com.artemzin.qualitymatters.models.QualityMattersImageLoader;
+import com.artemzin.qualitymatters.models.PicassoImageLoader;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jakewharton.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
@@ -22,15 +24,15 @@ public class ApplicationModule {
     public static final String MAIN_THREAD_HANDLER = "main_thread_handler";
 
     @NonNull
-    private final Application qualityMattersApp;
+    private final Application application;
 
-    public ApplicationModule(@NonNull Application qualityMattersApp) {
-        this.qualityMattersApp = qualityMattersApp;
+    public ApplicationModule(@NonNull Application application) {
+        this.application = application;
     }
 
     @Provides @NonNull @Singleton
     public Application provideQualityMattersApp() {
-        return qualityMattersApp;
+        return application;
     }
 
     @Provides @NonNull @Singleton
@@ -48,5 +50,10 @@ public class ApplicationModule {
         return new Picasso.Builder(qualityMattersApp)
                 .downloader(new OkHttp3Downloader(okHttpClient))
                 .build();
+    }
+
+    @Provides @NonNull @Singleton
+    public QualityMattersImageLoader provideImageLoader(@NonNull Picasso picasso) {
+        return new PicassoImageLoader(picasso);
     }
 }
