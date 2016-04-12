@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import com.artemzin.qualitymatters.api.ApiModule;
 import com.artemzin.qualitymatters.developer_settings.DevMetricsProxy;
 import com.artemzin.qualitymatters.developer_settings.DeveloperSettingsModel;
+import com.artemzin.qualitymatters.developer_settings.StrictModeNotifierProxy;
 import com.artemzin.qualitymatters.models.AnalyticsModel;
 
 import javax.inject.Inject;
@@ -37,6 +38,10 @@ public class QualityMattersApp extends Application {
     @NonNull
     Lazy<DevMetricsProxy> devMetricsProxy;
 
+    @Inject
+    @NonNull
+    Lazy<StrictModeNotifierProxy> strictModeNotifierProxy;
+
     // Prevent need in a singleton (global) reference to the application object.
     @NonNull
     public static QualityMattersApp get(@NonNull Context context) {
@@ -55,6 +60,7 @@ public class QualityMattersApp extends Application {
             Timber.plant(new Timber.DebugTree());
             developerSettingModel.get().apply();
             devMetricsProxy.get().apply();
+            strictModeNotifierProxy.get().apply();
         }
     }
 

@@ -43,4 +43,11 @@ public class DeveloperSettingsModule {
     public DevMetricsProxy provideDevMetricsProxy() {
         return new NoOpDevMetricsProxy();
     }
+
+    @Provides
+    @NonNull
+    @Singleton
+    public StrictModeNotifierProxy provideStrictModeNotifierProxy() {
+        return new NoOpStrictModeNotifierProxy();
+    }
 }

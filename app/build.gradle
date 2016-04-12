@@ -152,6 +152,9 @@ dependencies {
     debugCompile libraries.lynx
     debugCompile libraries.processPhoenix
 
+    debugCompile libraries.strictmodeNotifier
+    releaseCompile libraries.strictmodeNotifierNoOp
+
     testCompile libraries.junit
     testCompile libraries.robolectric
     testCompile libraries.assertJ

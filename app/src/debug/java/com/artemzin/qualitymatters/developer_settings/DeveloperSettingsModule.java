@@ -89,4 +89,11 @@ public class DeveloperSettingsModule {
     public DevMetricsProxy provideDevMetricsProxy(@NonNull Application application) {
         return new DevMetricsProxyImpl(application);
     }
+
+    @NonNull
+    @Provides
+    @Singleton
+    public StrictModeNotifierProxy provideStrictModeNotifierProxy(@NonNull Application application) {
+        return new StrictModeNotifierProxyImpl(application);
+    }
 }

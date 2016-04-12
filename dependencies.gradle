@@ -37,6 +37,7 @@ ext.versions = [
         yandexAppMetrica             : '2.40',
         lynx                         : '1.6',
         processPhoenix               : '1.0.2',
+        strictmodeNotifier           : '0.9.0',
 
         junit                        : '4.12',
         robolectric                  : '3.0',
@@ -97,6 +98,8 @@ ext.libraries = [
         lynx                    : "com.github.pedrovgs:lynx:$versions.lynx",
         devMetricsNoOp          : "com.frogermcs.androiddevmetrics:androiddevmetrics-runtime-noop:$versions.androidDevMetricsGradlePlugin",
         processPhoenix          : "com.jakewharton:process-phoenix:$versions.processPhoenix",
+        strictmodeNotifier      : "com.nshmura:strictmode-notifier:$versions.strictmodeNotifier",
+        strictmodeNotifierNoOp  : "com.nshmura:strictmode-notifier:$versions.strictmodeNotifier",
 
         // Test dependencies
         junit                   : "junit:junit:$versions.junit",
