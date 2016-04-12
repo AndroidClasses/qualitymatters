@@ -7,7 +7,7 @@ ext.versions = [
         compileSdk                   : 23,
         buildTools                   : '23.0.2',
 
-        androidGradlePlugin          : '1.5.0',
+        androidGradlePlugin          : '2.0.0',
         aptGradlePlugin              : '1.8',
         retrolambdaGradlePlugin      : '3.2.5',
         lombokGradlePlugin           : '0.2.3.a2',
@@ -18,7 +18,7 @@ ext.versions = [
         dagger                       : '2.2',
         javaxInject                  : '1',
         javaxAnnotationApi           : '1.2',
-        rxJava                       : '1.1.2',
+        rxJava                       : '1.1.3',
         rxLint                       : '1.0',
         supportLibs                  : '23.1.1',
         okHttp                       : '3.2.0',
@@ -29,12 +29,14 @@ ext.versions = [
         picasso                      : '2.5.2',
         picassoOkHttpDownloader      : '1.0.2',
         timber                       : '4.1.2',
+        
         espresso                     : '2.2.1',
         stetho                       : '1.3.1',
-        leakCanary                   : '1.3.1',
+        leakCanary                   : '1.4-beta2',
         tinyDancer                   : '0.0.8',
         yandexAppMetrica             : '2.40',
         lynx                         : '1.6',
+        processPhoenix               : '1.0.2',
 
         junit                        : '4.12',
         robolectric                  : '3.0',
@@ -94,6 +96,7 @@ ext.libraries = [
         paperwork               : "hu.supercluster:paperwork:$versions.paperworkGradlePlugin",
         lynx                    : "com.github.pedrovgs:lynx:$versions.lynx",
         devMetricsNoOp          : "com.frogermcs.androiddevmetrics:androiddevmetrics-runtime-noop:$versions.androidDevMetricsGradlePlugin",
+        processPhoenix          : "com.jakewharton:process-phoenix:$versions.processPhoenix",
 
         // Test dependencies
         junit                   : "junit:junit:$versions.junit",
