@@ -113,8 +113,6 @@ android {
 dependencies {
     compile libraries.dagger
     apt libraries.daggerCompiler
-    compile libraries.javaxInject
-    compile libraries.javaxAnnotationApi
 
     compile libraries.rxJava
     compile libraries.rxLint
@@ -137,6 +135,8 @@ dependencies {
     compile libraries.supportCardView
 
     compile libraries.butterKnife
+    apt libraries.butterKnifeCompiler
+    
     compile libraries.picasso
     compile libraries.picassoOkHttpDownloader
     compile libraries.timber
