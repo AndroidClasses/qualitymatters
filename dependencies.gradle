@@ -17,6 +17,7 @@ ext.versions = [
 
         dagger                       : '2.4',
 
+        rxAndroid                    : '1.2.0',
         rxJava                       : '1.1.5',
         rxLint                       : '1.0',
         supportLibs                  : '23.1.1',
@@ -107,4 +108,5 @@ ext.libraries = [
         supportTestRules        : "com.android.support.test:rules:$versions.supportTestRunner",
         espressoCore            : "com.android.support.test.espresso:espresso-core:$versions.espresso",
         espressoContrib         : "com.android.support.test.espresso:espresso-contrib:$versions.espresso",
+        rxjavaAndroid           : "io.reactivex:rxandroid:$versions.rxAndroid",
 ]

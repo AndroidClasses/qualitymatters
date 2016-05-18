@@ -145,6 +145,9 @@ dependencies {
     // We mock analytics for Integration tests under Robolectric and Functional (UI) tests under Instrumentation!
     compile libraries.yandexAppMetrica
 
+
+    compile libraries.rxjavaAndroid
+
     // Developer tools (Developer Settings)
     debugCompile libraries.okHttpLoggingInterceptor
     debugCompile libraries.stetho
