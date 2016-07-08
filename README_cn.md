@@ -4,7 +4,7 @@
 
 它包含有：
 
-* CI持续集成 (Travis)
+* CI持续集成 (Travis) - [![Build Status](https://travis-ci.org/AndroidClasses/qualitymatters.svg?branch=master)](https://travis-ci.org/AndroidClasses/qualitymatters)
 * UT单元测试 (有些用到Robolectric库, 有些则是纯JUnit runner外加模拟的`android.jar`).
 * IT集成测试Http, REST, JSON解析和RxJava配合在一起后工作正常.
 * 功能(UI)测试(库Espresso自定义规则, 模拟服务器和屏幕架构)从用户视角验证app像预期那样运行.
